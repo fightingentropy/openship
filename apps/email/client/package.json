@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "react-router dev",
     "build": "react-router build",
-    "start": "wrangler dev --port 3000 --show-interactive-dev-session=false",
+    "start": "wrangler dev --experimental-new-config --port 3000",
     "types": "wrangler types",
-    "deploy": "wrangler deploy",
+    "deploy": "bun run build:worker && cf deploy --prebuilt",
     "lint": "eslint .",
-    "machine-translate": "inlang machine translate --project project.inlang"
+    "machine-translate": "inlang machine translate --project project.inlang",
+    "build:worker": "bun run build && wrangler build --experimental-new-config --experimental-cf-build-output",
+    "deploy:dry-run": "bun run build:worker && cf deploy --prebuilt --dry-run"
   },
   "dependencies": {
     "@dnd-kit/core": "6.3.1",
@@ -119,6 +121,7 @@
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "@types/sanitize-html": "2.13.0",
+    "cf": "1.0.0-beta.12",
     "drizzle-kit": "^0.31.9",
     "eslint": "9.27.0",
     "jiti": "2.4.2",
@@ -128,6 +131,9 @@
     "typescript": "^5.9.3",
     "vite": "^6.3.5",
     "vite-tsconfig-paths": "^5.1.4",
-    "wrangler": "^4.40.0"
+    "wrangler": "4.147.0"
+  },
+  "engines": {
+    "node": ">=22.18.0"
   }
 }
