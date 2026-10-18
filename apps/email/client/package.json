@@ -121,7 +121,7 @@
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
     "@types/sanitize-html": "2.13.0",
-    "cf": "1.0.0-beta.12",
+    "cf": "1.0.0-beta.17",
     "drizzle-kit": "^0.31.9",
     "eslint": "9.27.0",
     "jiti": "2.4.2",
